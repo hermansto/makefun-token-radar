@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Launch Radar — what a token would be worth</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="brand">
+    <span class="mark" aria-hidden="true"></span>
+    <div>
+      <h1>Launch Radar</h1>
+      <p class="tagline">Every protocol that records no token, priced from its own TVL, growth and track record.</p>
+    </div>
+  </div>
+  <dl class="facts" id="facts"></dl>
+</header>
+
+<section class="controls" aria-label="Filters">
+  <label class="search">
+    <span class="sr">Search protocol</span>
+    <input id="q" type="search" placeholder="Search 342 protocols…" autocomplete="off">
+  </label>
+  <div class="chips" id="cats" role="group" aria-label="Category"></div>
+  <label class="select">
+    <span>Chain</span>
+    <select id="chain"></select>
+  </label>
+  <label class="select">
+    <span>Sort</span>
+    <select id="sort">
+      <option value="value">Implied value</option>
+      <option value="tvl">TVL</option>
+      <option value="growth">7d growth</option>
+      <option value="age">Track record</option>
+      <option value="ratio">Value per TVL</option>
+    </select>
+  </label>
+  <div class="tabs" role="tablist" aria-label="View">
+    <button id="tab-pre" class="tab is-on" role="tab" aria-selected="true">Pre-token <span id="n-pre"></span></button>
+    <button id="tab-live" class="tab" role="tab" aria-selected="false">Token trades <span id="n-live"></span></button>
+  </div>
+</section>
+
+<main class="board">
+  <section class="list" aria-label="Ranked board">
+    <div class="list-head">
+      <span class="c-rank">#</span>
+      <span class="c-name">Protocol</span>
+      <span class="c-cat">Category</span>
+      <span class="c-tvl">TVL</span>
+      <span class="c-growth">7d</span>
+      <span class="c-value">Implied value</span>
+      <span class="c-ratio">×TVL</span>
+    </div>
+    <ol class="rows" id="rows"></ol>
+    <p class="empty" id="empty" hidden>No protocol matches that filter.</p>
+  </section>
+
+  <aside class="detail" id="detail" aria-live="polite"></aside>
+</main>
+
+<footer class="method">
+  <h2>How a row is priced</h2>
+  <p id="method-line"></p>
+  <p class="note">A protocol's launch is the token it may issue one day. An implied value is this board's claim, not a prediction that a token is issued, and not advice. Every figure comes from the sealed DefiLlama snapshot named above; the model never special-cases a name.</p>
+</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
